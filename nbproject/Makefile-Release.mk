@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/Headers/FTPs.o \
 	${OBJECTDIR}/main.o
 
 
@@ -61,6 +62,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ftpclient: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/ftpclient ${OBJECTFILES} ${LDLIBSOPTIONS}
+
+${OBJECTDIR}/Headers/FTPs.o: Headers/FTPs.cpp
+	${MKDIR} -p ${OBJECTDIR}/Headers
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Headers/FTPs.o Headers/FTPs.cpp
 
 ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
